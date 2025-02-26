@@ -2,8 +2,10 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Heart, ShoppingCart } from "lucide-react";
+import { Suspense } from "react";
 
-export default function TourDetail() {
+// TourDetail içeriğini taşıyan bileşen
+function TourDetailContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tourId = searchParams.get("id");
@@ -16,7 +18,6 @@ export default function TourDetail() {
     { id: 1, title: "Phi Phi, Khai Adaları Hızlı Tekne ile Tam Gün Tur", price: 1400, discount: 30, rating: 4.3, imageUrl: "/path/to/phi-phi-islands.png", location: "Rassada Pier/Rassada...", theme: "Ada Turu", activity: "Yüzme", startTime: "09:00", groupSize: 20, vehicle: "Hızlı Tekne", category: "Turlar" },
     { id: 2, title: "James Bond Adası Turu", price: 1200, rating: 4.5, imageUrl: "/path/to/TekneTuru.png", location: "Phuket Town/Phuket...", theme: "Kara Turu", activity: "Koşu", startTime: "12:00", groupSize: 15, vehicle: "Yat", category: "Turlar" },
     { id: 3, title: "Safari Macera Turu", price: 1800, rating: 4.0, imageUrl: "/path/to/safari.png", location: "Chalong Tapınağı/Chalong...", theme: "Safari", activity: "Fil Bakımı", startTime: "15:00", groupSize: 25, vehicle: "Safari", category: "Turlar" },
-    // ... other tours ...
   ];
 
   useEffect(() => {
@@ -94,5 +95,14 @@ export default function TourDetail() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Suspense ile sarılmış ana bileşen
+export default function TourDetail() {
+  return (
+    <Suspense fallback={<div>Yükleniyor...</div>}>
+      <TourDetailContent />
+    </Suspense>
   );
 }
