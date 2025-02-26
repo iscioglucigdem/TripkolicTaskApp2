@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 
+//
 export default function FilterPopup({ category, onClose, onApplyFilters }) {
   const [filters, setFilters] = useState({
     location: "",

@@ -68,4 +68,4 @@ export default function TourCard({ title, price, discount, rating, imageUrl, loc
       </div>
     </Link>
   );
-}
+}//

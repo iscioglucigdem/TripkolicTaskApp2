@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
-
+//
 export default function FavoritesCartPopup({ type, onClose }) {
   const [items, setItems] = useState([]);
 
